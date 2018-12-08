@@ -17,6 +17,7 @@ pipeline {
                 echo 'Thanks for the option'
          
     }
+    }
         stage('Deploy for production') {
             when {
                 branch 'master'
