@@ -12,6 +12,7 @@ pipeline {
     }
             steps {
                 echo 'Hello, Maven'
+                echo env.BRANCH_NAME
                 bat 'dir'
                 bat 'mvn --version'
                 echo 'Thanks for the option'
