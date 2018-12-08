@@ -12,7 +12,6 @@ pipeline {
                 echo 'Hello, Maven'
                 bat 'dir'
                 bat 'mvn --version'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 echo 'Thanks for the option'
             }
         }
@@ -20,9 +19,6 @@ pipeline {
             when {
                 branch 'master'
             }
-            options {
-        	   timeout(time: 30, unit: 'SECONDS')
-            input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
             steps {
                echo 'Hello, JDK'
