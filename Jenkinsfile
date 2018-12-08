@@ -1,17 +1,23 @@
 #!groovy​
 
-sh 'git name-rev --name-only HEAD > GIT_BRANCH'
-sh 'cat GIT_BRANCH'
-git_branch = readFile('GIT_BRANCH').trim()
-env.GIT_BRANCH = git_branch
+
 
 pipeline {
     agent any 
     stages {
        
-    
+        stage('Prepare') {
+            steps {     
+sh 'git name-rev --name-only HEAD > GIT_BRANCH'
+sh 'cat GIT_BRANCH'
+git_branch = readFile('GIT_BRANCH').trim()
+env.GIT_BRANCH = git_branch
+            }
+        }
     
     stage('Deliver for development') {
+        
+
             when {
     expression {
         return env.GIT_BRANCH != 'master';
