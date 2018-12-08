@@ -25,6 +25,7 @@ pipeline {
         }
             }
             steps {
+               echo env.BRANCH_NAME
                echo 'Hello, JDK'
                 bat 'java -version'
             } 
