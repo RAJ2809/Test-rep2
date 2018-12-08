@@ -5,9 +5,7 @@ pipeline {
     stages {
     
     stage('Deliver for development') {
-            when {
-                branch 'develop'
-            }
+            if (env.BRANCH_NAME == 'develop') {
             steps {
                 echo 'Hello, Maven'
                 bat 'dir'
@@ -15,6 +13,7 @@ pipeline {
                 echo 'Thanks for the option'
             }
         }
+    }
         stage('Deploy for production') {
             when {
                 branch 'master'
