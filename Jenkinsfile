@@ -15,8 +15,7 @@ pipeline {
                 bat 'dir'
                 bat 'mvn --version'
                 echo 'Thanks for the option'
-            }
-        }
+         
     }
         stage('Deploy for production') {
             when {
