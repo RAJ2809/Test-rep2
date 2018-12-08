@@ -20,7 +20,9 @@ pipeline {
     }
         stage('Deploy for production') {
             when {
-                branch 'master'
+                expression {
+        return env.BRANCH_NAME == 'master';
+        }
             }
             steps {
                echo 'Hello, JDK'
