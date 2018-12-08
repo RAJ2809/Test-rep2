@@ -19,13 +19,12 @@ pipeline {
             when {
                 branch 'master'
             }
-            }
             steps {
                echo 'Hello, JDK'
                 bat 'java -version'
-                
+            } 
         }
         
       }
       }
-      }
+    
