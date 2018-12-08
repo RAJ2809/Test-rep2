@@ -5,7 +5,11 @@ pipeline {
     stages {
     
     stage('Deliver for development') {
-            if (env.BRANCH_NAME == 'develop') {
+            when {
+    expression {
+        return env.BRANCH_NAME != 'master';
+        }
+    }
             steps {
                 echo 'Hello, Maven'
                 bat 'dir'
