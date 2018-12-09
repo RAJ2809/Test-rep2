@@ -6,21 +6,14 @@ pipeline {
     agent any 
     stages {
        
-        stage('Prepare') {
-            steps {     
-sh 'git name-rev --name-only HEAD > GIT_BRANCH'
-sh 'cat GIT_BRANCH'
-git_branch = readFile('GIT_BRANCH').trim()
-env.GIT_BRANCH = git_branch
-            }
-        }
+  
     
     stage('Deliver for development') {
         
 
             when {
     expression {
-        return env.GIT_BRANCH != 'master';
+        return env.GIT_BRANCH != 'origin/master';
         }
     }
             steps {
@@ -35,7 +28,7 @@ env.GIT_BRANCH = git_branch
         stage('Deploy for production') {
             when {
                 expression {
-        return env.BRANCH_NAME == 'master';
+        return env.GIT_BRANCH == 'origin/master';
         }
             }
             steps {
